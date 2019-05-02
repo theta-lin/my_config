@@ -10,6 +10,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'vim-scripts/a.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/DrawIt'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -18,10 +19,14 @@ Plug 'mileszs/ack.vim'
 Plug 'vhdirk/vim-cmake'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
 " Plug 'jeaye/color_coded', { 'do': 'cmake .' }
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
+Plug 'jceb/vim-orgmode'
+Plug 'mattn/calendar-vim'
+Plug 'tpope/vim-speeddating'
 call plug#end()
 
 set encoding=utf-8
@@ -48,8 +53,8 @@ set backspace=indent,eol,start
 
 nmap ff :NERDTreeToggle<CR>
 nmap tt :TagbarToggle<CR>
-nmap b <Plug>(easymotion-prefix)
-nmap B <Plug>(easymotion-prefix)s
+nmap F <Plug>(easymotion-prefix)
+nmap S <Plug>(easymotion-prefix)s
 
 nnoremap <BS> {
 onoremap <BS> {
