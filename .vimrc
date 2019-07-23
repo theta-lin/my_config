@@ -1,4 +1,9 @@
-call plug#begin('/.vim/plugged')
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -15,10 +20,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
+Plug 'jremmen/vim-ripgrep'
 Plug 'vhdirk/vim-cmake'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
-" Plug 'jeaye/color_coded', { 'do': 'cmake .' }
+Plug 'jeaye/color_coded', { 'do': 'cmake .' }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'SirVer/ultisnips'
@@ -27,18 +32,26 @@ Plug 'majutsushi/tagbar'
 Plug 'jceb/vim-orgmode'
 Plug 'mattn/calendar-vim'
 Plug 'tpope/vim-speeddating'
+Plug 'wincent/terminus'
 call plug#end()
 
 set encoding=utf-8
 set guifont=Consolas:h15
+
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+set t_Co=256
 syntax enable
 set background=dark
 colorscheme solarized
+
 set noshowmode
 set number
 set cursorline
 set cursorcolumn
 set colorcolumn=80
+set tabstop=4
+set shiftwidth=4
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -48,6 +61,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 let g:airline_theme='solarized'
+let g:airline#extensions#whitespace#mixed_indent_algo = 2
 
 set backspace=indent,eol,start
 
@@ -67,10 +81,13 @@ vnoremap < <gv
 vnoremap > >gv
 
 if v:version > 703 || v:version == 703 && has('patch541')
-  set formatoptions+=j
+	set formatoptions+=j
 endif
 
 let g:pear_tree_repeatable_expand=0
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf=0
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_key_invoke_completion = '<C-b>'
+
