@@ -24,7 +24,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'vhdirk/vim-cmake'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
 Plug 'jeaye/color_coded', { 'do': 'cmake .' }
-Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -38,9 +38,8 @@ call plug#end()
 set encoding=utf-8
 set guifont=Consolas:h15
 
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans=1
 set t_Co=256
+let g:solarized_termtrans=1
 syntax enable
 set background=dark
 colorscheme solarized
