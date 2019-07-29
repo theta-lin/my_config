@@ -183,3 +183,6 @@ client.focused #000000 #000000 #FFFFFF #000000
 client.focused_inactive #333333 #333333 #FFFFFF #000000
 client.unfocused #333333 #333333 #FFFFFF #333333
 client.urgent #ff7066 #ff7066 #141414 #ff7066
+
+exec compton -b
+

@@ -36,7 +36,7 @@ Plug 'wincent/terminus'
 call plug#end()
 
 set encoding=utf-8
-set guifont=Consolas:h15
+set guifont=DejaVu\ Sans\ Mono\ 12
 
 set t_Co=256
 let g:solarized_termtrans=1
