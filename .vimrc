@@ -53,6 +53,7 @@ set tabstop=4
 set shiftwidth=4
 set ignorecase
 set smartcase
+set cino=:0,g0,L0
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
