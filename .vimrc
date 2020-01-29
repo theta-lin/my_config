@@ -77,7 +77,6 @@ set ignorecase
 set smartcase
 set cino=:0,g0,L0
 set backspace=indent,eol,start
-setlocal spell spelllang=en_us
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -108,6 +107,10 @@ vnoremap > >gv
 if v:version > 703 || v:version == 703 && has('patch541')
 	set formatoptions+=j
 endif
+
+autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> %s/\s\+$//e
+nmap <F7> :setlocal spell! spelllang=en_us<CR>
+imap <F7> <Esc>:setlocal spell! spelllang=en_us<CR>i
 
 let g:pear_tree_repeatable_expand=0
 
