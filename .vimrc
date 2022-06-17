@@ -10,7 +10,7 @@ Plug 'jeaye/color_coded', { 'do': 'cmake .' }
 " Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Code completion/linting/formatting
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'godlygeek/tabular'
@@ -59,7 +59,7 @@ Plug 'wincent/terminus'
 call plug#end()
 
 set encoding=utf-8
-set guifont=DejaVu\ Sans\ Mono\ 12
+set guifont=DejaVu\ Sans\ Mono\ 10
 set t_Co=256
 let g:solarized_termtrans=1
 syntax enable
