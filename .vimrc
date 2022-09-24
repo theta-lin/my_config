@@ -4,24 +4,24 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+
 " Color and highlight
 Plug 'altercation/vim-colors-solarized'
-Plug 'jeaye/color_coded', { 'do': 'cmake .' }
+" Plug 'jeaye/color_coded', { 'do': 'cmake .' }
 " Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Code completion/linting/formatting
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'godlygeek/tabular'
 Plug 'tmsvg/pear-tree'
-Plug 'dpc/vim-smarttabs'
+Plug 'Thyrum/vim-stabs'
 
-" Auxiliary
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Latex
+Plug 'lervag/vimtex'
 
 " File/buffer management
-Plug 'scrooloose/nerdtree'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'vim-scripts/a.vim'
 Plug 'majutsushi/tagbar'
@@ -59,6 +59,7 @@ Plug 'wincent/terminus'
 call plug#end()
 
 set encoding=utf-8
+
 set guifont=DejaVu\ Sans\ Mono\ 10
 set t_Co=256
 let g:solarized_termtrans=1
@@ -73,10 +74,24 @@ set cursorcolumn
 set colorcolumn=80
 set tabstop=4
 set shiftwidth=4
-set ignorecase
-set smartcase
+set laststatus=2
+
 set cino=:0,g0,L0
 set backspace=indent,eol,start
+set noexpandtab
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set spell
+set spelllang=en,cjk
+set dict+=/usr/share/dict/words
+set complete+=k
+set diffopt+=icase
+
+autocmd! InsertEnter * call feedkeys("\<Cmd>noh\<cr>" , 'n')
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -85,14 +100,13 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
+
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ }
-
-nmap ff :NERDTreeToggle<CR>
-nmap tt :TagbarToggle<CR>
-nmap F <Plug>(easymotion-prefix)
-nmap S <Plug>(easymotion-prefix)s
 
 nnoremap <BS> {
 onoremap <BS> {
@@ -117,5 +131,10 @@ let g:pear_tree_repeatable_expand=0
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_autoclose_preview_window_after_insertion=1
-let g:ycm_key_invoke_completion = '<C-b>'
+"let g:ycm_key_invoke_completion = '<C-b>'
+let g:ycm_enable_semantic_highlighting=1
 
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+set conceallevel=1
+let g:tex_conceal='abdmg'
